@@ -81,9 +81,9 @@ module Shoulda # :nodoc:
 
         def authorizer
           if rails_3_1?
-            @subject.class.active_authorizer[@role]
+            @subject.send(:mass_assignment_authorizer, @role)
           else
-            @subject.class.active_authorizer
+            @subject.send(:mass_assignment_authorizer)
           end
         end
 
